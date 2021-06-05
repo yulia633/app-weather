@@ -20,3 +20,6 @@ ci:
 	docker-compose build
 	docker-compose -f docker-compose.yml -p weather-app-ci run --rm app make install
 	docker-compose -f docker-compose.yml -p weather-app-ci up
+
+linter:
+	composer exec -v phpcs -- --standard=PSR12 index.php -np
