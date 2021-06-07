@@ -23,6 +23,8 @@ services:
       - 33060:3306
     volumes:
       - weather_app:/var/lib/mysql
+      - ./database:/tmp/database
+    command: mysqld --init-file="/tmp/database/install_db.sql"
     environment:
       MYSQL_DATABASE: ${DATABASE_NAME}
       MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
