@@ -1,6 +1,18 @@
 <?php
 
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
+
 require 'vendor/autoload.php';
+
+// Включить ошибки
+$settings = require __DIR__ . '/src/settings.php';
+$app = new \Slim\App($settings);
+
+
+// Настройка для логирования
+require __DIR__ . '/src/dependencies.php';
+
 
 // Создать контейнер
 $container = new \Slim\Container([
@@ -27,6 +39,14 @@ $container = new \Slim\Container([
 
 // Создать объект App
 $app = new \Slim\App($container);
+
+// Define app routes
+$app->get('/', function (Request $request, Response $response) {
+    $response->getBody()->write("Hello, Slim");
+    return $response;
+});
+
+
 // Получить погоду по идентификатору местоположения
 $app->get('/locations/{id}', function ($request, $response, $args) {
     // Получить местоположение из базы данных
