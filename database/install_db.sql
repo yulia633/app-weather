@@ -1,9 +1,9 @@
-CREATE DATABASE mydb;
-GRANT ALL PRIVILEGES ON mydb.* TO 'root'@'%' IDENTIFIED BY 'mysql';
-GRANT ALL PRIVILEGES ON mydb.* TO 'root'@'localhost' IDENTIFIED BY 'mysql';
-USE mydb;
-CREATE TABLE locations (
-id VARCHAR(64) NOT NULL,
-weather JSON NULL,
-last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE DATABASE IF NOT EXISTS `mydb`;
+
+USE `mydb`;
+
+CREATE TABLE `locations` (
+    `id` VARCHAR(64) NOT NULL,
+    `weather` JSON NULL,
+    `last_updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -8,3 +8,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 WORKDIR /app
 
+COPY database/install_db.sql /docker-entrypoint-initdb.d/
